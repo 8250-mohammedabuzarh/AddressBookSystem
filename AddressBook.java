@@ -135,5 +135,57 @@ class AddressBook {
             System.out.println("Contact not found.\n");
         }
     }
+    public void displayContacts() {
+        if (contacts.isEmpty()) {
+            System.out.println("Address book is empty.\n");
+        } else {
+            System.out.println("Contacts in Address Book '" + name + "':");
+            for (Contact contact : contacts) {
+                System.out.println(contact);
+            }
+            System.out.println();
+        }
+    }
 
+    public void start() {
+        int choice;
+        do {
+            System.out.println("Address Book Menu - " + name + ":");
+            System.out.println("1. Add a new contact");
+            System.out.println("2. Edit an existing contact");
+            System.out.println("3. Delete a contact");
+            System.out.println("4. Display all contacts");
+            System.out.println("5. Exit");
+
+            System.out.println("Enter your choice:");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    addContact();
+                    break;
+                case 2:
+                    editContact();
+                    break;
+                case 3:
+                    deleteContact();
+                    break;
+                case 4:
+                    displayContacts();
+                    break;
+                case 5:
+                    System.out.println("Exiting Address Book '" + name + "'.");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a number between 1 and 5.\n");
+                    break;
+            }
+        } while (choice != 5);
+    }
+
+
+    public String getName() {
+        return name;
+    }
 }
